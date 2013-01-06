@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
-
+  <div align="center" id="Sform">
+     <h1 style="color: white;">Add Employee</h1>
+     <h3 style="color: green">Please enter employee details</h3>
 <form action="<?php echo site_url('home/add_main')?>" method="post">
  
  <div class="control-group"> 
@@ -64,5 +66,6 @@
  
  
  </form>
+ </div>
  
 <?php $this->load->view('includes/footer'); ?>

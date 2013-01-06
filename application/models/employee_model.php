@@ -4,13 +4,13 @@ class Employee_model extends CI_Model{
            
     function __construct(){
         parent::__construct();
-        $this->load->database();
+        $this->load->database(); // loads the database
         
     }
     
   function search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$limit){
                    
-            $this->db->select('*');
+        $this->db->select('*');
             $this->db->from('employees');
             $this->db->join('dept_emp','employees.emp_no = dept_emp.emp_no');
             $this->db->join('titles','dept_emp.emp_no = titles.emp_no');
@@ -72,15 +72,7 @@ class Employee_model extends CI_Model{
       
       $query = $this->db->insert('employees');
       
-      
-     // $this->db->set('emp_no',$emp_no);
-    //  $this->db->set('from_date',$from_date);
-     // $this->db->set('to_date',$to_date);
-   //   $this->db->set('dept_no',$dept_no);
-      
-    //  $query = $this->db->insert('dept_emp');
-      
-      // inserting data into employee table  
+       // inserting data into salary table 
       $this->db->set('emp_no',$emp_no);
       $this->db->set('salary',$salary);
       $this->db->set('from_date',$from_date);
@@ -93,22 +85,50 @@ class Employee_model extends CI_Model{
   public function delete($emp_no){
       
        $this->db->set('emp_no',$emp_no);
-       $this->db->delete('employees', array('emp_no' => $emp_no));
+       $this->db->delete('employees', array('emp_no' => $emp_no));  // using array to delete from employee table
       
       
   }
     public function update($emp_no,$salary){
         
-        $data = array(
+        $data = array(    // using array to update data in salaries table and storing into $data
         'emp_no' => $emp_no,
         'salary' => $salary
         );
        
        $this->db->where('emp_no',$emp_no);
-       $this->db->update('salaries', $data);
+       $this->db->update('salaries', $data); // updating in data in salaries table     
       
+  } 
+      public function title($emp_no,$title){
+        
+        $data = array(       // using array to update data in title table and storing into $data
+        'emp_no' => $emp_no,
+        'title' => $title
+        );
+       
+       $this->db->where('emp_no',$emp_no);
+       $this->db->update('titles', $data); // updating in data in salaries table     
       
-  }    
+  }
+  
+   public function promote($emp_no,$dept_no,$from_date,$to_date){
+       
+       // inserting data into department managers table    
+       $this->db->set('emp_no',$emp_no);
+       $this->db->set('dept_no',$dept_no);
+       $this->db->set('from_date',$from_date);
+       $this->db->set('to_date',$to_date);    
+       
+       $query = $this->db->insert('dept_manager'); // inserting data into the dept_manager table
+       
+   }
+     public function demote($emp_no){
+       
+       $this->db->delete('dept_manager', array('emp_no' => $emp_no)); // deletes the array of employee number in dept_manager table
+       
+   }
+     
     }
     
     ?>

@@ -21,53 +21,45 @@ e.preventDefault();
     
 </script>
  -->
-<style type="text/css">
 <!--
- #navbar ul { 
-        margin: 0; 
-        padding: 10px; 
-        list-style-type: none; 
-        text-align: center; 
-        background-color: #000;
-        font-family: sans-serif; 
-        } 
- 
-#navbar ul li {  
-        display: inline;
-        font-family: sans-serif; 
-        } 
- 
-#navbar ul li a { 
-        text-decoration: none; 
-        padding: .2em 5em; 
-        color: #fff; 
-        background-color: #000;
-        font-family: sans-serif; 
-        } 
- 
-#navbar ul li a:hover { 
-        color: #000; 
-        background-color: #fff;
-        font-family: sans-serif; 
+ <script> 
+$(document).ready(function(){
+    $('#searchform').click(function(e) {
+        e.preventDefault();
+        var querystring = "find/findemp?";
+        if ($('#firstname').val() != ''){
+            querystring += "firstname=" + $('#firstname').val();
         }
-#navbar label { 
-font: 100;
-color: white;
-font-family: sans-serif; 
-}
-#Sform form { 
-font: 100;
-text-align: center;
-color: green;
-font-weight:bolder;
-}
-#Sform input {  
-        font: 100;
-        color: red;
-        display:inline;
-        font-weight: bolder;
-        } 
-</style>
+        if ($('#lastname').val() != ''){
+            querystring += "&lastname=" + $('#lastname').val();
+        }
+        if ($('#department').val() != ''){
+            querystring += "&department=" + $('#department').val();
+        }
+        if ($('#title').val() != ''){
+            querystring += "&title=" + $('#title').val();
+        }
+        $.getJSON(querystring,
+            null,
+            function(data){
+            $.each(data, function() {
+                $.each(this, function(i, item) {
+                    $('.search_results tbody').append(
+                    '<tr>' +
+                    '<td>' + item.firstname + '</td>' +
+                    '<td>' + item.lastname + '</td>' +
+                    '<td>' + item.dept + '</td>' +
+                    '<td>' + item.jobtitle + '</td>' +
+                    '</tr>'
+                    );
+                });
+            });
+        });
+    });
+});
+
+</script>
+  -->
 
 </head>
 <body style="background-color: #4E0000;">
@@ -80,7 +72,9 @@ font-weight:bolder;
         <li><a href="<?php echo site_url('home/add_post')?>"><b>Add Employee</b></a></li> 
         <li><a href="<?php echo site_url('home/delete_post')?>"><b>Delete</b></a></li> 
         <li><a href="<?php echo site_url('home/update_post')?>"><b>Update</b></a></li> 
-        <li><a href="<?php echo site_url('home')?>"><b>Manage Employee</b></a></li> 
+        <li><a href="<?php echo site_url('home/title_post')?>"><b>Change Job Title</b></a></li> 
+        <li><a href="<?php echo site_url('home/promote_post')?>"><b>Promote</b></a></li> 
+        <li><a href="<?php echo site_url('home/demote_post')?>"><b>Demote</b></a></li> 
         <li><a href="<?php echo site_url('home/do_logout')?>"><font color="red">Logout</font></a></li> 
   </ul> 
 </div> 

@@ -22,7 +22,7 @@
             <input type='password' name='password' id='password' size='32' /><br />                            
         
             <input type='Submit' value='Login' />
-            <a href="<?php echo site_url('public_user/search') ?>">Public User</a>            
+            <a href="<?php echo site_url('find/findemp') ?>">Find Employee</a>            
         </form>
     </div>
 </body>

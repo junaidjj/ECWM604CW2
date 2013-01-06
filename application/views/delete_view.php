@@ -1,5 +1,7 @@
 <?php $this->load->view('includes/header'); ?>
-
+<div align="center" id="Sform">
+     <h1 style="color: white;">Delete Employee</h1>
+     <h3 style="color: green">Please enter employee number to delete</h3>
 <form action="<?php echo site_url('home/delete_main')?>" method="post">
  
  <div class="control-group"> 
@@ -8,10 +10,9 @@
  </div>
  
  <div class="controls"> <input type= "submit" name="submit"></div>
- 
-
- 
+     
  
  </form>
+ </div>
  
 <?php $this->load->view('includes/footer'); ?>
