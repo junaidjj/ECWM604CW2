@@ -35,15 +35,18 @@
        $last_name = $this->input->get('last_name');
        $dept_no = $this->input->get('dept_no');
        $title = $this->input->get('title');
+       $gender = $this->input->get('gender');
+       $hire_date = $this->input->get('hire_date');
+       $salary = $this->input->get('salary');
        
        $this->load->model('employee_model');  // this will load employee model
-       if (empty($emp_no) && empty($birth_date) && empty($first_name) && empty($last_name) && empty($dept_no) && empty($title)) {
+       if (empty($emp_no) && empty($birth_date) && empty($first_name) && empty($last_name) && empty($dept_no) && empty($title) && empty($gender) && empty($hire_date) && empty($salary)) {
        $data = (''); // if the data in the files are empty the it will process null value
        } else {     // else it will process the query 
-       $data['query'] = $this->employee_model->search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$limit);
+       $data['query'] = $this->employee_model->search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$gender,$hire_date,$salary,$limit);
        }
        
-       $data['query'] = $this->employee_model->search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$limit);
+       $data['query'] = $this->employee_model->search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$gender,$hire_date,$salary,$limit);
        $this->load->view('employee_view', $data);    // opens the employee view
    }
    

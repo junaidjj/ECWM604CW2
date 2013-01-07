@@ -42,7 +42,7 @@
  
     <th>First Name</th> 
     <th>Last Name</th>
-    <th>Department Number</th>
+    <th>Department Name</th>
     <th>Current Job Title</th>    
     </thead>
                                    
@@ -51,7 +51,7 @@
             <tr>                   
                 <td><?php echo ($employee->first_name); ?> </td>
                 <td><?php echo ($employee->last_name); ?> </td> 
-                <td><?php echo ($employee->dept_no); ?> </td> 
+                <td><?php echo ($employee->dept_name); ?> </td> 
                 <td><?php echo ($employee->title); ?> </td>
                 
              <?php endforeach; ?>

@@ -8,7 +8,7 @@ class Employee_model extends CI_Model{
         
     }
     
-  function search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$limit){
+  function search($emp_no,$birth_date,$first_name,$last_name,$dept_no,$title,$gender,$hire_date,$salary,$limit){
                    
         $this->db->select('*');
             $this->db->from('employees');
@@ -42,6 +42,18 @@ class Employee_model extends CI_Model{
 
             $this->db->where('employees.last_name',$last_name);
 
+                }  
+                
+            if(!empty($gender)) {
+
+            $this->db->where('employees.gender',$gender);
+
+                }  
+            
+            if(!empty($hire_date)) {
+
+            $this->db->where('employees.hire_date',$hire_date);
+
                 }
                 
            if(!empty($dept_no)) {
@@ -53,6 +65,12 @@ class Employee_model extends CI_Model{
           if(!empty($title)) {
 
           $this->db->where('titles.title',$title);
+
+                } 
+                
+          if(!empty($salary)) {
+
+          $this->db->where('salaries.salary',$salary);
 
                 }
                 

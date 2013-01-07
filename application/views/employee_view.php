@@ -16,10 +16,19 @@
            <label >Last Name:</label>
            <input type= "text" name="last_name"> <br />
            
+           <label >Gender:</label>
+           <input type= "text" name="gender"> <br />
+           
             
            
            <label >Current job Title:</label> 
            <input type= "text" name="title"> <br />
+           
+           <label >Salary:</label> 
+           <input type= "text" name="salary"> <br /> 
+           
+           <label >Hire Date:</label> 
+           <input type= "text" name="hire_date"> <br />
            
            <label >Departments</label> 
             <select name="dept_no">
@@ -48,8 +57,11 @@
     <th>Birth Date</th>
     <th>First Name</th> 
     <th>Last Name</th>
-    <th>Department Number</th>
+    <th>Gender</th>
+    <th>Department Name</th>
     <th>Current Job Title</th>    
+    <th>Salary</th>    
+    <th>Hire Date</th>    
     </thead>
                                    
     <tbody>  
@@ -59,8 +71,11 @@
                 <td><?php echo ($employee->birth_date); ?> </td>                    
                 <td><?php echo ($employee->first_name); ?> </td>
                 <td><?php echo ($employee->last_name); ?> </td> 
-                <td><?php echo ($employee->dept_no); ?> </td> 
+                <td><?php echo ($employee->gender); ?> </td> 
+                <td><?php echo ($employee->dept_name); ?> </td> 
                 <td><?php echo ($employee->title); ?> </td>
+                <td><?php echo ($employee->salary); ?> </td>
+                <td><?php echo ($employee->hire_date); ?> </td>
                 
              <?php endforeach; ?>
             </tr>

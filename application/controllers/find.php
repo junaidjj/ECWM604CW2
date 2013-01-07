@@ -33,10 +33,10 @@
        $this->load->view('find_view', $data);    // opens the employee view
       
        
-      //  $data['count'] = count($results['rows']);
+       // $data['count'] = count($results['rows']);
         //$data['results'] = $results['rows']; // inside array
     
-        //echo json_encode($data);
+        echo json_encode($data);
    }
        
              
