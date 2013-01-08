@@ -45,7 +45,9 @@ class Find_model extends CI_Model{
                 }
                 
                 $query = $this->db->get();
-                return $query->result(); 
+		  $result['results'] = $query->result_array();
+		  $result['count'] = $query->num_rows();
+                return $result; 
                       
   }
   

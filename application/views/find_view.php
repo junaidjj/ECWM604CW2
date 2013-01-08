@@ -7,18 +7,20 @@
          
              
            <label >First Name:</label>
-           <input type= "text" name="first_name"><br />
+           <input type= "text" name="firstname" id="firstname"><br />
            
            <label >Last Name:</label>
-           <input type= "text" name="last_name"> <br />
+           <input type= "text" name="lastname" id="lastname"> <br />
+           
+           <input type="hidden" name="format" value="format">
            
             
            
            <label >Current job Title:</label> 
-           <input type= "text" name="title"> <br />
+           <input type= "text" name="jobtitle" id="jobtitle"> <br />
            
            <label >Departments</label> 
-            <select name="dept_no">
+            <select name="dept" id="dept">
             <option value="d009" selected="d009">Customer Service</option>
             <option value="d005" selected="d005">Development</option>
             <option value="d002" selected="d002">Finance</option>
@@ -46,13 +48,13 @@
     <th>Current Job Title</th>    
     </thead>
                                    
-    <tbody>  
-    <?php foreach($query as $employee):?>
+    <tbody id="">  
+    <?php foreach($query['results'] as $employee):?>
             <tr>                   
-                <td><?php echo ($employee->first_name); ?> </td>
-                <td><?php echo ($employee->last_name); ?> </td> 
-                <td><?php echo ($employee->dept_name); ?> </td> 
-                <td><?php echo ($employee->title); ?> </td>
+                <td><?php echo ($employee['first_name']); ?> </td>
+                <td><?php echo ($employee['last_name']); ?> </td> 
+                <td><?php echo ($employee['dept_name']); ?> </td> 
+                <td><?php echo ($employee['title']); ?> </td>
                 
              <?php endforeach; ?>
             </tr>

@@ -28,29 +28,30 @@ e.preventDefault();
     $('#search_submit').click(function(e) {
         e.preventDefault();
         var querystring = "find/findemp?";
-        if ($('#first_name').val() != ''){
-            querystring += "first_name=" + $('#first_name').val();
+        if ($('#firstname').val() != ''){
+            querystring += "&firstname=" + $('#firstname').val();
         }
-        if ($('#last_name').val() != ''){
-            querystring += "&last_name=" + $('#last_name').val();
+        if ($('#lastname').val() != ''){
+            querystring += "&lastname=" + $('#lastname').val();
         }
-        if ($('#dept_no').val() != ''){
-            querystring += "&dept_no=" + $('#dept_no').val();
+        if ($('#dept').val() != ''){
+            querystring += "&dept=" + $('#dept').val();
         }
-        if ($('#title').val() != ''){
-            querystring += "&title=" + $('#title').val();
+        if ($('#jobtitle').val() != ''){
+            querystring += "&jobtitle=" + $('#jobtitle').val();
         }
         $.getJSON(querystring,
             null,
             function(data){
+		$('.search_results tbody').html();
             $.each(data, function() {
                 $.each(this, function(i, item) {
                     $('.search_results tbody').append(
                     '<tr>' +
-                    '<td>' + item.firs_tname + '</td>' +
-                    '<td>' + item.last_name + '</td>' +
-                    '<td>' + item.dept_no + '</td>' +
-                    '<td>' + item.title + '</td>' +
+                    '<td>' + item.firstname + '</td>' +
+                    '<td>' + item.lastname + '</td>' +
+                    '<td>' + item.dept + '</td>' +
+                    '<td>' + item.jobtitle + '</td>' +
                     '</tr>'
                     );
                 });
